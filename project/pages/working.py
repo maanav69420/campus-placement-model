@@ -1,4 +1,7 @@
 import pickle
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+import numpy as np
+import pandas as pd
 
 pickle_in = open("C:/Users/maanav aditya/OneDrive/Documents/GitHub/campus-placement-model/model.pkl", "rb")
 classifier = pickle.load(pickle_in)
@@ -6,9 +9,10 @@ def predict_outcome(secondary_percent, secondary_branch, highschool_percent,
        high_school_branch, hsc_s, degree_percent, degree_type,
        work_xp, employment_test_percent, specialisation, mba_percent):
     
-    prediction = classifier.predict([[secondary_percent, secondary_branch, highschool_percent,
-       high_school_branch, hsc_s, degree_percent, degree_type,
-       work_xp, employment_test_percent, specialisation, mba_percent]])
+    input_val = np.array([[secondary_percent ,secondary_branch, highschool_percent,high_school_branch,hsc_s,degree_percent,degree_type ,specialisation,
+          mba_percent,work_xp,employment_test_percent]])
+    
+    prediction = classifier.predict(input_val)
     
     print(prediction)
     return prediction
@@ -60,8 +64,7 @@ def main():
     if st.button('predict'):
         result = predict_outcome(secondary_percent, secondary_branch, highschool_percent,
        high_school_branch, hsc_s, degree_percent, degree_type,
-       work_xp, employment_test_percent, specialisation, mba_percent
-       )
+       work_xp, employment_test_percent, specialisation, mba_percent)
     st.success('the outcome is {}'.format(result))
 
 if __name__ == '__main__':
