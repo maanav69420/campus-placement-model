@@ -7,7 +7,7 @@ import pickle
 warnings.filterwarnings("ignore")
 
 # Load the data
-data=pd.read_csv("D:/python/git/experiment/train.csv")
+data=pd.read_csv("train.csv")
 
 # Drop unnecessary columns
 c=['salary','sl_no','gender']
