@@ -14,7 +14,12 @@ def predict_outcome(secondary_percent, secondary_branch, highschool_percent,
     
     prediction = classifier.predict(input_val)
     
+    
     print(prediction)
+    if (prediction[0] == 0 ):
+        print('the person is not placed')
+    else:
+        print("the person is placed")
     return prediction
 
 import streamlit as st
